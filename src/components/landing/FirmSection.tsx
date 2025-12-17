@@ -59,17 +59,16 @@ export function FirmSection() {
                         </motion.div>
 
                         {/* Floating Stat 1: Years - ANIMATED */}
-                        {/* Floating Stat 1: Years - ANIMATED */}
                         <motion.div
                             initial={{ opacity: 0, x: -30 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.3, duration: 0.6 }}
-                            animate={{ y: [0, -8, 0] }} // Float animation
+                            animate={{ y: [0, -5, 0] }} // Reduced movement range for subtlety
                             // @ts-ignore
                             transition={{
                                 y: {
-                                    duration: 6, // Increased for smoother float
+                                    duration: 8, // Slower duration
                                     repeat: Infinity,
                                     ease: "easeInOut",
                                     delay: 0
@@ -86,14 +85,14 @@ export function FirmSection() {
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            animate={{ y: [0, -12, 0] }} // Float animation (different phase)
+                            animate={{ y: [0, -8, 0] }} // Reduced movement
                             // @ts-ignore
                             transition={{
                                 y: {
-                                    duration: 7, // Increased for smoother float
+                                    duration: 9, // Different duration for organic feel
                                     repeat: Infinity,
                                     ease: "easeInOut",
-                                    delay: 1.5
+                                    delay: 2
                                 }
                             }}
                             className="absolute -top-12 -right-8 md:-right-24 bg-slate-900 text-cream-50 p-6 shadow-2xl rounded-sm border border-gold-500/30 z-20"
@@ -106,14 +105,17 @@ export function FirmSection() {
                         </motion.div>
                     </div>
 
-                    {/* Juan Francisco Bio (Unchanged) */}
+                    {/* Juan Francisco Bio */}
                     <motion.div
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
-                        className="flex flex-col space-y-8 pt-4"
+                        className="flex flex-col space-y-8 pt-4 relative"
                     >
+                        {/* Justice Sketch Background */}
+                        <div className="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none -z-10 bg-[url('/lady_justice_sketch_gold.png')] bg-no-repeat bg-right-top bg-contain" />
+
                         <div>
                             <h3 className="text-4xl font-serif text-slate-900 mb-2">Juan Francisco Navarro Tomás</h3>
                             <span className="inline-block py-1 px-3 bg-gold-100 text-gold-700 text-xs tracking-widest uppercase font-semibold rounded-sm">
@@ -142,21 +144,21 @@ export function FirmSection() {
                             </p>
                         </div>
 
-                        {/* Contact Bar CTA - Embedded */}
+                        {/* Contact Bar CTA - Redesigned */}
                         <div className="mt-8">
                             <motion.a
                                 href="#contact-section"
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
-                                className="flex items-center justify-between bg-slate-900 text-white p-1 rounded-full pr-8 group cursor-pointer w-full md:w-auto md:inline-flex"
+                                whileHover={{ scale: 1.01 }}
+                                whileTap={{ scale: 0.99 }}
+                                className="inline-flex items-center gap-4 group cursor-pointer"
                             >
-                                <div className="bg-gold-500 text-slate-900 p-3 rounded-full mr-4">
-                                    <Phone className="w-5 h-5" />
-                                </div>
-                                <span className="uppercase tracking-widest text-sm font-semibold mr-4 group-hover:text-gold-200 transition-colors">
+                                <div className="h-[1px] w-12 bg-slate-400 group-hover:bg-gold-500 transition-colors" />
+                                <span className="uppercase tracking-widest text-sm font-bold text-slate-900 group-hover:text-gold-600 transition-colors">
                                     Contactar Ahora
                                 </span>
-                                <span className="text-gold-500">→</span>
+                                <div className="p-2 border border-slate-300 rounded-full group-hover:border-gold-500 group-hover:text-gold-600 transition-all">
+                                    <Phone className="w-4 h-4" />
+                                </div>
                             </motion.a>
                         </div>
 
