@@ -72,13 +72,12 @@ export function ServicesSection() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                                // Floating Animation - Smoothed out
-                                animate={{ y: [0, -8, 0] }}
+                                animate={{ y: [0, -4, 0] }} // Very subtle movement
                                 // Staggered float
                                 // @ts-ignore
                                 transition={{
                                     y: {
-                                        duration: 6, // Slower for more fluidity
+                                        duration: 8, // Very slow
                                         repeat: Infinity,
                                         ease: "easeInOut",
                                         delay: index * 0.5
