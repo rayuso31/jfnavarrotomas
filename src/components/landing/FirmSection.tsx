@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import Image from "next/image";
+import React from "react";
 import { Users, Phone, ShieldCheck } from "lucide-react"; // Replaced Award with ShieldCheck for a more confident look
 
 export function FirmSection() {
@@ -62,43 +63,47 @@ export function FirmSection() {
                         </div>
 
                         <div className="prose prose-lg text-slate-600 font-sans leading-relaxed">
-                            <p>
+                            <p className="mb-6">
                                 <strong className="text-slate-900">Colegiado número 166</strong> del Ilustre Colegio de Procuradores de Valencia,
                                 de alta en el Partido JUDICIAL DE LIRIA (Valencia) desde 1988.
                             </p>
 
-                            <p className="uppercase tracking-wide font-medium text-slate-800 text-sm mt-6 mb-2">
+                            <p className="uppercase tracking-wide font-medium text-slate-800 text-sm mt-8 mb-4 border-l-2 border-gold-400 pl-4">
                                 EJERCIENDO ÚNICA Y EXCLUSIVAMENTE LA PROCURADURÍA.
                             </p>
 
-                            <p>
+                            <p className="mb-6">
                                 Ha recibido diploma colegial en reconocimiento a sus <strong className="text-gold-600">más de 25 años de ejercicio impecable</strong>.
                             </p>
-                            <p>
+                            <p className="mb-6">
                                 Esta experiencia nos ha permitido contar con los recursos técnicos y humanos necesarios para garantizar la satisfacción de los Letrados directores y los clientes que confían en nosotros.
                             </p>
-                            <p>
+                            <p className="mb-6">
                                 Juan Fco Navarro Tomás se ha rodeado de un gran equipo para brindarles el mejor servicio profesional y humano.
-                                <br />
-                                <span className="block mt-4 text-slate-800 font-medium">Nuestro despacho, cada día más cerca de ustedes.</span>
                             </p>
+                            <span className="block mt-4 text-slate-800 font-medium italic">"Nuestro despacho, cada día más cerca de ustedes."</span>
                         </div>
 
-                        {/* Stats - Moved to Bottom of Text Column */}
-                        <div className="flex flex-wrap gap-12 pt-8 border-t border-gold-200/50">
+                        {/* Stats - Counting Animation */}
+                        <div className="flex flex-wrap gap-12 pt-10 border-t border-gold-200/50">
                             <div>
-                                <span className="block text-4xl font-serif text-slate-900 font-bold mb-1">37+</span>
+                                <div className="flex items-baseline">
+                                    <Counter value={37} duration={2} />
+                                    <span className="text-4xl font-serif text-slate-900 font-bold mb-1">+</span>
+                                </div>
                                 <span className="text-xs uppercase tracking-widest text-slate-500">Años de Experiencia</span>
                             </div>
                             <div>
-                                <span className="block text-4xl font-serif text-slate-900 font-bold mb-1">90.000+</span>
+                                <div className="flex items-baseline">
+                                    <Counter value={90000} duration={2.5} />
+                                    <span className="text-4xl font-serif text-slate-900 font-bold mb-1">+</span>
+                                </div>
                                 <span className="text-xs uppercase tracking-widest text-slate-500">Clientes Satisfechos</span>
                             </div>
                         </div>
 
                         {/* Contact CTA */}
-                        <div className="mt-4">
-                            <h4 className="text-slate-900 font-bold text-lg mb-4">Contactar</h4>
+                        <div className="mt-6">
                             <motion.a
                                 href="#contact-section"
                                 whileHover={{ scale: 1.01 }}
