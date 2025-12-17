@@ -13,6 +13,9 @@ export function FirmSection() {
                 <Image src="/banner-luxury.png" alt="Luxury Background" fill className="object-cover object-top" />
             </div>
 
+            {/* Global Lady Justice Watermark */}
+            <div className="absolute right-0 top-20 w-[60%] h-full opacity-5 pointer-events-none -z-5 bg-[url('/lady_justice_sketch_gold.png')] bg-no-repeat bg-center bg-contain mix-blend-multiply" />
+
             <div className="container mx-auto px-6 relative z-10">
 
                 {/* Section Header */}
@@ -33,9 +36,9 @@ export function FirmSection() {
                 </motion.div>
 
                 {/* Procurador Profile & Stats */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 mb-32 items-start">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 mb-32 items-start relative">
 
-                    {/* Juan Francisco Image & Floating Stats */}
+                    {/* Juan Francisco Image & Stats */}
                     <div className="relative w-full max-w-sm mx-auto">
                         {/* Decorative Frame */}
                         <div className="absolute -inset-4 border-2 border-gold-400/30 -z-10 rounded-sm" />
@@ -58,44 +61,27 @@ export function FirmSection() {
                             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
                         </motion.div>
 
-                        {/* Floating Stat 1: Years - ANIMATED */}
+                        {/* Stat 1: Years - STATIC but Premium */}
                         <motion.div
                             initial={{ opacity: 0, x: -30 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.3, duration: 0.6 }}
-                            animate={{ y: [0, -5, 0] }} // Reduced movement range for subtlety
-                            // @ts-ignore
-                            transition={{
-                                y: {
-                                    duration: 8, // Slower duration
-                                    repeat: Infinity,
-                                    ease: "easeInOut",
-                                    delay: 0
-                                }
-                            }}
-                            className="absolute -bottom-8 -left-4 md:-left-8 bg-white p-6 shadow-xl shadow-slate-900/10 border-l-4 border-gold-500 max-w-[200px] z-20"
+                            whileHover={{ y: -5, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }} // Subtle lift on hover
+                            className="absolute -bottom-8 -left-4 md:-left-8 bg-white p-6 shadow-xl shadow-slate-900/10 border-l-4 border-gold-500 max-w-[200px] z-20 cursor-default transition-all duration-300"
                         >
                             <span className="block text-4xl font-serif text-slate-900 font-bold">37+</span>
                             <span className="text-xs uppercase tracking-widest text-slate-500">Años de Experiencia</span>
                         </motion.div>
 
-                        {/* Floating Stat 2: Clients - ANIMATED */}
+                        {/* Stat 2: Clients - STATIC but Premium */}
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            animate={{ y: [0, -8, 0] }} // Reduced movement
-                            // @ts-ignore
-                            transition={{
-                                y: {
-                                    duration: 9, // Different duration for organic feel
-                                    repeat: Infinity,
-                                    ease: "easeInOut",
-                                    delay: 2
-                                }
-                            }}
-                            className="absolute -top-12 -right-8 md:-right-24 bg-slate-900 text-cream-50 p-6 shadow-2xl rounded-sm border border-gold-500/30 z-20"
+                            transition={{ delay: 0.5, duration: 0.6 }}
+                            whileHover={{ y: -5, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)" }} // Subtle lift on hover
+                            className="absolute -top-12 -right-8 md:-right-24 bg-slate-900 text-cream-50 p-6 shadow-2xl rounded-sm border border-gold-500/30 z-20 cursor-default transition-all duration-300"
                         >
                             <div className="flex items-center gap-3 mb-1">
                                 <Users className="w-5 h-5 text-gold-400" />
@@ -111,11 +97,8 @@ export function FirmSection() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
-                        className="flex flex-col space-y-8 pt-4 relative"
+                        className="flex flex-col space-y-8 pt-4 relative z-10" // Added z-10 for text readability
                     >
-                        {/* Justice Sketch Background */}
-                        <div className="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none -z-10 bg-[url('/lady_justice_sketch_gold.png')] bg-no-repeat bg-right-top bg-contain" />
-
                         <div>
                             <h3 className="text-4xl font-serif text-slate-900 mb-2">Juan Francisco Navarro Tomás</h3>
                             <span className="inline-block py-1 px-3 bg-gold-100 text-gold-700 text-xs tracking-widest uppercase font-semibold rounded-sm">
@@ -163,7 +146,6 @@ export function FirmSection() {
                         </div>
 
                     </motion.div>
-
                 </div>
 
                 {/* The Team - Glassmorphism Card */}
