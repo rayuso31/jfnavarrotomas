@@ -4,6 +4,7 @@ import { ServicesSection } from "@/components/landing/ServicesSection";
 import { ScopeSection } from "@/components/landing/ScopeSection";
 import { ContactSection } from "@/components/landing/ContactSection";
 import { FAQSection } from "@/components/landing/FAQSection";
+import { ReviewsSection } from "@/components/landing/ReviewsSection";
 
 export default function Home() {
   return (
