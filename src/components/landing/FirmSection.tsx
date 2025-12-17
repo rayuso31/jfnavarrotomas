@@ -13,8 +13,16 @@ export function FirmSection() {
                 <Image src="/banner-luxury.png" alt="Luxury Background" fill className="object-cover object-top" />
             </div>
 
-            {/* Global Lady Justice Watermark */}
-            <div className="absolute right-0 top-20 w-[60%] h-full opacity-5 pointer-events-none -z-5 bg-[url('/lady_justice_sketch_gold.png')] bg-no-repeat bg-center bg-contain mix-blend-multiply" />
+            {/* Global Lady Justice Background - Optimized visibility */}
+            <div className="absolute inset-0 w-full h-full pointer-events-none -z-5 opacity-10">
+                <Image
+                    src="/lady_justice_bg.png"
+                    alt="Lady Justice Background"
+                    fill
+                    className="object-cover object-right-top md:object-contain md:object-right"
+                    quality={90}
+                />
+            </div>
 
             <div className="container mx-auto px-6 relative z-10">
 
