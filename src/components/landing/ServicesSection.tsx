@@ -145,11 +145,11 @@ export function ServicesSection() {
                                         viewport={{ once: true }}
                                         transition={{ delay: i * 0.2 }}
                                         // Floating animation for timeline cards as well, smooth
-                                        animate={{ y: [0, -5, 0] }}
+                                        animate={{ y: [0, -4, 0] }}
                                         // @ts-ignore
                                         transition={{
                                             y: {
-                                                duration: 5,
+                                                duration: 8,
                                                 repeat: Infinity,
                                                 ease: "easeInOut",
                                                 delay: i * 0.3
