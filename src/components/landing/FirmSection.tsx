@@ -59,6 +59,7 @@ export function FirmSection() {
                         </motion.div>
 
                         {/* Floating Stat 1: Years - ANIMATED */}
+                        {/* Floating Stat 1: Years - ANIMATED */}
                         <motion.div
                             initial={{ opacity: 0, x: -30 }}
                             whileInView={{ opacity: 1, x: 0 }}
@@ -68,7 +69,7 @@ export function FirmSection() {
                             // @ts-ignore
                             transition={{
                                 y: {
-                                    duration: 5,
+                                    duration: 6, // Increased for smoother float
                                     repeat: Infinity,
                                     ease: "easeInOut",
                                     delay: 0
@@ -89,10 +90,10 @@ export function FirmSection() {
                             // @ts-ignore
                             transition={{
                                 y: {
-                                    duration: 6,
+                                    duration: 7, // Increased for smoother float
                                     repeat: Infinity,
                                     ease: "easeInOut",
-                                    delay: 1
+                                    delay: 1.5
                                 }
                             }}
                             className="absolute -top-12 -right-8 md:-right-24 bg-slate-900 text-cream-50 p-6 shadow-2xl rounded-sm border border-gold-500/30 z-20"
