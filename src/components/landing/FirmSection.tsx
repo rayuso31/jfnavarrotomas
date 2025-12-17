@@ -43,85 +43,34 @@ export function FirmSection() {
                     <div className="w-24 h-1 bg-gold-400 mt-6 md:ml-0 mx-auto" />
                 </motion.div>
 
-                {/* Procurador Profile & Stats */}
+                {/* Procurador Profile & Stats - Swapped Layout (Text Left, Image Right) */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 mb-32 items-start relative">
 
-                    {/* Juan Francisco Image & Stats */}
-                    <div className="relative w-full max-w-sm mx-auto">
-                        {/* Decorative Frame */}
-                        <div className="absolute -inset-4 border-2 border-gold-400/30 -z-10 rounded-sm" />
-                        <div className="absolute -inset-2 border border-gold-500/50 -z-10 rounded-sm translate-x-2 translate-y-2 bg-cream-100" />
-
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8 }}
-                            className="relative aspect-[3/4] overflow-hidden rounded-sm shadow-2xl shadow-gold-900/20 bg-cream-200"
-                        >
-                            <Image
-                                src="/jfnt.png"
-                                alt="Juan Francisco Navarro Tomás"
-                                fill
-                                className="object-cover"
-                                sizes="(max-width: 768px) 100vw, 400px"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
-                        </motion.div>
-
-                        {/* Stat 1: Years - STATIC but Premium */}
-                        <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.3, duration: 0.6 }}
-                            whileHover={{ y: -5, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }} // Subtle lift on hover
-                            className="absolute -bottom-8 -left-4 md:-left-8 bg-white p-6 shadow-xl shadow-slate-900/10 border-l-4 border-gold-500 max-w-[200px] z-20 cursor-default transition-all duration-300"
-                        >
-                            <span className="block text-4xl font-serif text-slate-900 font-bold">37+</span>
-                            <span className="text-xs uppercase tracking-widest text-slate-500">Años de Experiencia</span>
-                        </motion.div>
-
-                        {/* Stat 2: Clients - STATIC but Premium */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.5, duration: 0.6 }}
-                            whileHover={{ y: -5, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)" }} // Subtle lift on hover
-                            className="absolute -top-12 -right-8 md:-right-24 bg-slate-900 text-cream-50 p-6 shadow-2xl rounded-sm border border-gold-500/30 z-20 cursor-default transition-all duration-300"
-                        >
-                            <div className="flex items-center gap-3 mb-1">
-                                <Users className="w-5 h-5 text-gold-400" />
-                                <span className="text-3xl font-serif font-bold text-gold-100">+90.000</span>
-                            </div>
-                            <span className="text-xs uppercase tracking-widest text-gold-200/60 block text-right">Clientes Satisfechos</span>
-                        </motion.div>
-                    </div>
-
-                    {/* Juan Francisco Bio */}
+                    {/* Left Column: Text Content & Stats */}
                     <motion.div
-                        initial={{ opacity: 0, x: 50 }}
+                        initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
-                        className="flex flex-col space-y-8 pt-4 relative z-10" // Added z-10 for text readability
+                        className="flex flex-col space-y-8 relative z-10 order-2 lg:order-1"
                     >
                         <div>
-                            <h3 className="text-4xl font-serif text-slate-900 mb-2">Juan Francisco Navarro Tomás</h3>
-                            <span className="inline-block py-1 px-3 bg-gold-100 text-gold-700 text-xs tracking-widest uppercase font-semibold rounded-sm">
+                            <h3 className="text-4xl lg:text-5xl font-serif text-slate-900 mb-2">Juan Francisco Navarro Tomás</h3>
+                            <span className="inline-block py-1 px-3 bg-gold-100/50 text-gold-700 text-xs tracking-widest uppercase font-semibold rounded-sm border border-gold-200">
                                 Titular del Despacho
                             </span>
                         </div>
 
                         <div className="prose prose-lg text-slate-600 font-sans leading-relaxed">
                             <p>
-                                <strong className="text-slate-800">Colegiado número 166</strong> del Ilustre Colegio de Procuradores de Valencia,
-                                de alta en el Partido Judicial de Liria (Valencia) desde 1988.
+                                <strong className="text-slate-900">Colegiado número 166</strong> del Ilustre Colegio de Procuradores de Valencia,
+                                de alta en el Partido JUDICIAL DE LIRIA (Valencia) desde 1988.
                             </p>
-                            <p className="font-serif text-xl text-slate-800 italic border-l-2 border-gold-400 pl-6 my-6">
-                                "Ejerciendo única y exclusivamente la procuraduría."
+
+                            <p className="uppercase tracking-wide font-medium text-slate-800 text-sm mt-6 mb-2">
+                                EJERCIENDO ÚNICA Y EXCLUSIVAMENTE LA PROCURADURÍA.
                             </p>
+
                             <p>
                                 Ha recibido diploma colegial en reconocimiento a sus <strong className="text-gold-600">más de 25 años de ejercicio impecable</strong>.
                             </p>
@@ -129,31 +78,65 @@ export function FirmSection() {
                                 Esta experiencia nos ha permitido contar con los recursos técnicos y humanos necesarios para garantizar la satisfacción de los Letrados directores y los clientes que confían en nosotros.
                             </p>
                             <p>
-                                Juan Francisco Navarro Tomás se ha rodeado de un gran equipo para brindarles el mejor servicio profesional y humano.
+                                Juan Fco Navarro Tomás se ha rodeado de un gran equipo para brindarles el mejor servicio profesional y humano.
                                 <br />
                                 <span className="block mt-4 text-slate-800 font-medium">Nuestro despacho, cada día más cerca de ustedes.</span>
                             </p>
                         </div>
 
-                        {/* Contact Bar CTA - Redesigned */}
-                        <div className="mt-8">
+                        {/* Stats - Moved to Bottom of Text Column */}
+                        <div className="flex flex-wrap gap-12 pt-8 border-t border-gold-200/50">
+                            <div>
+                                <span className="block text-4xl font-serif text-slate-900 font-bold mb-1">37+</span>
+                                <span className="text-xs uppercase tracking-widest text-slate-500">Años de Experiencia</span>
+                            </div>
+                            <div>
+                                <span className="block text-4xl font-serif text-slate-900 font-bold mb-1">90.000+</span>
+                                <span className="text-xs uppercase tracking-widest text-slate-500">Clientes Satisfechos</span>
+                            </div>
+                        </div>
+
+                        {/* Contact CTA */}
+                        <div className="mt-4">
+                            <h4 className="text-slate-900 font-bold text-lg mb-4">Contactar</h4>
                             <motion.a
                                 href="#contact-section"
                                 whileHover={{ scale: 1.01 }}
                                 whileTap={{ scale: 0.99 }}
-                                className="inline-flex items-center gap-4 group cursor-pointer"
+                                className="inline-flex items-center gap-3 text-slate-900 group cursor-pointer"
                             >
-                                <div className="h-[1px] w-12 bg-slate-400 group-hover:bg-gold-500 transition-colors" />
-                                <span className="uppercase tracking-widest text-sm font-bold text-slate-900 group-hover:text-gold-600 transition-colors">
-                                    Contactar Ahora
+                                <span className="uppercase tracking-widest text-sm font-bold group-hover:text-gold-600 transition-colors">
+                                    CONTACTAR AHORA
                                 </span>
                                 <div className="p-2 border border-slate-300 rounded-full group-hover:border-gold-500 group-hover:text-gold-600 transition-all">
                                     <Phone className="w-4 h-4" />
                                 </div>
                             </motion.a>
                         </div>
-
                     </motion.div>
+
+                    {/* Right Column: Image - Clean & High Quality */}
+                    <div className="relative w-full max-w-md mx-auto order-1 lg:order-2">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                            className="relative aspect-[3/4] overflow-hidden rounded-lg shadow-2xl bg-slate-100"
+                        >
+                            <Image
+                                src="/jfnt_refined_v2.png" // Using the new refined image
+                                alt="Juan Francisco Navarro Tomás"
+                                fill
+                                className="object-cover"
+                                sizes="(max-width: 768px) 100vw, 500px"
+                                priority
+                            />
+                        </motion.div>
+                        {/* Subtle back decoration */}
+                        <div className="absolute -z-10 top-8 -right-8 w-full h-full border border-gold-200 rounded-lg hidden md:block" />
+                    </div>
+
                 </div>
 
                 {/* The Team - Glassmorphism Card */}
