@@ -117,6 +117,46 @@ export function ServicesSection() {
                             </motion.div>
                         ))}
                     </div>
+
+                    {/* Workflow Timeline - Visualizing Speed */}
+                    <div className="mt-24 pt-16 border-t border-slate-800">
+                        <div className="text-center mb-16">
+                            <h3 className="text-2xl font-serif text-white mb-4">La Velocidad de nuestra Gestión</h3>
+                            <p className="text-slate-400 max-w-2xl mx-auto">
+                                Nuestro sistema digital nos permite procesar las notificaciones en minutos, no en días.
+                            </p>
+                        </div>
+
+                        <div className="relative">
+                            {/* Connecting Line */}
+                            <div className="absolute top-1/2 left-0 w-full h-0.5 bg-slate-800 -translate-y-1/2 hidden md:block" />
+                            <div className="absolute top-1/2 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-gold-500 to-transparent -translate-y-1/2 hidden md:block opacity-30" />
+
+                            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+                                {[
+                                    { time: "09:00", title: "Recepción", desc: "LexNET / Justicia.cat" },
+                                    { time: "09:05", title: "Procesado", desc: "Clasificación IA / Manual" },
+                                    { time: "09:10", title: "Control", desc: "Revisión Oficial Habilitado" },
+                                    { time: "09:15", title: "Notificación", desc: "Enviado al Letrado" },
+                                ].map((step, i) => (
+                                    <motion.div
+                                        key={i}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: i * 0.2 }}
+                                        className="bg-slate-900 border border-slate-700 p-6 rounded-lg text-center relative group hover:border-gold-500/50 transition-colors"
+                                    >
+                                        <div className="w-4 h-4 bg-slate-900 border-2 border-gold-500 rounded-full mx-auto mb-4 relative z-20 group-hover:scale-125 transition-transform shadow-[0_0_10px_#D4AF37]" />
+                                        <span className="text-gold-400 font-mono text-sm tracking-widest block mb-2">{step.time}</span>
+                                        <h4 className="text-white font-serif text-lg mb-1">{step.title}</h4>
+                                        <p className="text-slate-500 text-xs uppercase tracking-wide">{step.desc}</p>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>

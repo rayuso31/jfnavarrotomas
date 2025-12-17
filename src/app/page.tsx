@@ -3,7 +3,7 @@ import { FirmSection } from "@/components/landing/FirmSection";
 import { ServicesSection } from "@/components/landing/ServicesSection";
 import { ScopeSection } from "@/components/landing/ScopeSection";
 import { ContactSection } from "@/components/landing/ContactSection";
-import { ReviewsSection } from "@/components/landing/ReviewsSection";
+import { FAQSection } from "@/components/landing/FAQSection";
 
 export default function Home() {
   return (
@@ -13,6 +13,7 @@ export default function Home() {
       <ServicesSection />
       <ScopeSection />
       <ReviewsSection />
+      <FAQSection />
       <ContactSection />
     </main>
   );
