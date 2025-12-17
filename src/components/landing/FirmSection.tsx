@@ -120,14 +120,41 @@ export function FirmSection() {
                         </div>
                     </motion.div>
 
-                    {/* Right Column: Image - Clean & High Quality */}
-                    <div className="relative w-full max-w-md mx-auto order-1 lg:order-2">
+                    {/* Refined Global Background - Subtle Marble & Gold Veins */}
+                    <div className="absolute inset-0 bg-[url('/luxury_marble_bg.png')] bg-repeat opacity-40 mix-blend-multiply pointer-events-none -z-20" />
+
+                    {/* Background Gradient for depth */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-cream-50/80 via-transparent to-cream-50/80 pointer-events-none -z-10" />
+
+                    {/* Right Column: Image - Clean & High Quality with Greek Columns */}
+                    <div className="relative w-full max-w-md mx-auto order-1 lg:order-2 flex justify-center items-center">
+
+                        {/* Left Column Decoration */}
+                        <div className="hidden md:block absolute -left-12 h-[120%] w-24 top-[-10%] opacity-80 z-0">
+                            <Image
+                                src="/greek_column_gold.png"
+                                alt="Ionic Column"
+                                fill
+                                className="object-contain drop-shadow-xl"
+                            />
+                        </div>
+
+                        {/* Right Column Decoration */}
+                        <div className="hidden md:block absolute -right-12 h-[120%] w-24 top-[-10%] opacity-80 z-0 scale-x-[-1]">
+                            <Image
+                                src="/greek_column_gold.png"
+                                alt="Ionic Column"
+                                fill
+                                className="object-contain drop-shadow-xl"
+                            />
+                        </div>
+
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
-                            className="relative aspect-[3/4] overflow-hidden rounded-lg shadow-2xl bg-slate-100"
+                            className="relative aspect-[3/4] w-full overflow-hidden rounded-t-full rounded-b-lg shadow-2xl bg-slate-100 z-10 border-[6px] border-white shadow-gold-900/20"
                         >
                             <Image
                                 src="/jfnt_refined_v2.png" // Using the new refined image
@@ -137,9 +164,9 @@ export function FirmSection() {
                                 sizes="(max-width: 768px) 100vw, 500px"
                                 priority
                             />
+                            {/* Inner subtle border */}
+                            <div className="absolute inset-0 border border-gold-500/20 rounded-t-full rounded-b-lg m-2 pointer-events-none" />
                         </motion.div>
-                        {/* Subtle back decoration */}
-                        <div className="absolute -z-10 top-8 -right-8 w-full h-full border border-gold-200 rounded-lg hidden md:block" />
                     </div>
 
                 </div>
