@@ -88,25 +88,25 @@ export function FirmSection() {
                         </div>
 
                         {/* Stats - Counting Animation */}
-                        <div className="flex flex-wrap gap-12 pt-10 border-t border-gold-200/50">
+                        <div className="flex flex-row justify-between md:justify-start gap-6 md:gap-12 pt-10 border-t border-gold-200/50">
                             <div>
                                 <div className="flex items-baseline">
                                     <Counter value={37} duration={2} />
-                                    <span className="text-4xl font-serif text-slate-900 font-bold mb-1">+</span>
+                                    <span className="text-3xl md:text-4xl font-serif text-slate-900 font-bold mb-1 ml-1">+</span>
                                 </div>
-                                <span className="text-xs uppercase tracking-widest text-slate-500">Años de Experiencia</span>
+                                <span className="text-[10px] md:text-xs uppercase tracking-widest text-slate-500">Años de Experiencia</span>
                             </div>
                             <div>
                                 <div className="flex items-baseline">
                                     <Counter value={90000} duration={2.5} />
-                                    <span className="text-4xl font-serif text-slate-900 font-bold mb-1">+</span>
+                                    <span className="text-3xl md:text-4xl font-serif text-slate-900 font-bold mb-1 ml-1">+</span>
                                 </div>
-                                <span className="text-xs uppercase tracking-widest text-slate-500">Clientes Satisfechos</span>
+                                <span className="text-[10px] md:text-xs uppercase tracking-widest text-slate-500">Clientes Satisfechos</span>
                             </div>
                         </div>
 
                         {/* Contact CTA */}
-                        <div className="mt-6">
+                        <div className="mt-8">
                             <motion.a
                                 href="#contact-section"
                                 whileHover={{ scale: 1.01 }}
@@ -127,7 +127,7 @@ export function FirmSection() {
                     <div className="absolute inset-0 bg-gradient-to-b from-cream-50/80 via-transparent to-cream-50/80 pointer-events-none -z-10" />
 
                     {/* Right Column: Image - Simplified & Robust Premium Frame */}
-                    <div className="relative w-full max-w-md mx-auto order-1 lg:order-2">
+                    <div className="relative w-full max-w-md mx-auto order-1 lg:order-2 mb-10 lg:mb-0">
                         <div className="relative rounded-xl border-[3px] border-gold-400 p-2 shadow-2xl shadow-gold-500/20 bg-white">
                             <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg">
                                 <Image
@@ -148,13 +148,13 @@ export function FirmSection() {
 
                 </div>
 
-                {/* The Team - Glassmorphism Card */}
+                {/* Values Section (Renamed from Team) */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    className="glass-card p-10 md:p-16 rounded-sm border-t-4 border-gold-400 relative overflow-hidden group hover:border-gold-300 transition-colors duration-500"
+                    className="glass-card p-8 md:p-16 rounded-sm border-t-4 border-gold-400 relative overflow-hidden group hover:border-gold-300 transition-colors duration-500"
                 >
                     {/* Living Background Effect */}
                     <div className="absolute inset-0 -z-10">
@@ -180,7 +180,7 @@ export function FirmSection() {
                         />
                     </div>
 
-                    <div className="absolute top-0 right-0 p-10 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
+                    <div className="absolute top-0 right-0 p-10 opacity-5 group-hover:opacity-10 transition-opacity duration-500 hidden md:block">
                         {/* Replaced Icon with ShieldCheck for elegance */}
                         <ShieldCheck className="w-48 h-48 text-slate-900" />
                     </div>
@@ -191,17 +191,22 @@ export function FirmSection() {
                             <ShieldCheck className="w-8 h-8 text-gold-600" />
                         </div>
 
-                        <h3 className="text-2xl font-serif text-slate-800 mb-8">Equipo de Oficiales Habilitados</h3>
+                        <h3 className="text-2xl font-serif text-slate-800 mb-6">Compromiso de Calidad</h3>
                         <p className="text-slate-600 max-w-2xl mx-auto mb-10 text-lg">
-                            La excelencia en la gestión diaria recae en nuestro equipo de oficiales altamente cualificadas,
-                            que aseguran que cada trámite se realice con precisión y celeridad.
+                            Más allá de la gestión procesal, ofrecemos tranquilidad.
+                            Nuestra metodología se basa en tres pilares fundamentales:
                         </p>
 
-                        <div className="flex flex-wrap justify-center gap-8 md:gap-16">
-                            {['Carolina Castaño', 'María Pilar Pérez', 'Yolanda Nieto'].map((name) => (
-                                <div key={name} className="flex flex-col items-center space-y-2">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16">
+                            {[
+                                { title: 'Celeridad', desc: 'Tramitación inmediata' },
+                                { title: 'Transparencia', desc: 'Información en tiempo real' },
+                                { title: 'Eficacia', desc: 'Resolución proactiva' }
+                            ].map((item) => (
+                                <div key={item.title} className="flex flex-col items-center space-y-3">
                                     <div className="w-2 h-2 bg-gold-400 rounded-full" />
-                                    <span className="text-xl text-slate-900 font-serif font-medium">{name}</span>
+                                    <span className="text-xl text-slate-900 font-serif font-medium">{item.title}</span>
+                                    <span className="text-xs uppercase tracking-widest text-slate-500">{item.desc}</span>
                                 </div>
                             ))}
                         </div>
