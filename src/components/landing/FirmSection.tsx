@@ -128,21 +128,15 @@ export function FirmSection() {
 
                     {/* Right Column: Image with "Golden Light" Frame */}
                     <div className="relative w-full max-w-md mx-auto order-1 lg:order-2 flex justify-center items-center">
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8 }}
-                            className="relative p-[4px] rounded-lg overflow-hidden shadow-2xl"
-                        >
-                            {/* Animated Golden Light Border */}
-                            <div className="absolute inset-0 bg-slate-900">
-                                <div className="absolute inset-[-150%] bg-[conic-gradient(from_0deg,transparent_0_340deg,white_360deg)] animate-[spin_4s_linear_infinite] opacity-40 mix-blend-overlay" />
-                                <div className="absolute inset-[-150%] bg-[conic-gradient(from_0deg,transparent_0_340deg,#d4af37_360deg)] animate-[spin_4s_linear_infinite]" />
+                        <div className="relative p-[3px] rounded-lg overflow-hidden shadow-2xl bg-gradient-to-br from-slate-800 to-slate-900">
+
+                            {/* Animated Golden Light Border - Simplified & Robust */}
+                            <div className="absolute inset-0">
+                                <div className="absolute inset-[-200%] bg-[conic-gradient(from_0deg,transparent_0_340deg,#d4af37_360deg)] animate-[spin_4s_linear_infinite] opacity-100" />
                             </div>
 
-                            {/* Image Container - sits on top of the border */}
-                            <div className="relative bg-slate-100 rounded-[calc(0.5rem-2px)] overflow-hidden aspect-[3/4] w-full h-full z-10">
+                            {/* Image Container - Strictly on top */}
+                            <div className="relative bg-slate-100 rounded-[6px] overflow-hidden aspect-[3/4] w-full z-10">
                                 <Image
                                     src="/jfnt_refined_v2.png"
                                     alt="Juan Francisco Navarro Tomás"
@@ -152,7 +146,7 @@ export function FirmSection() {
                                     priority
                                 />
                             </div>
-                        </motion.div>
+                        </div>
                     </div>
 
                 </div>
