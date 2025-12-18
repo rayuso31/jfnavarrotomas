@@ -88,7 +88,7 @@ export function FirmSection() {
                         </div>
 
                         {/* Stats - Counting Animation */}
-                        <div className="flex flex-row justify-between md:justify-start gap-6 md:gap-12 pt-10 border-t border-gold-200/50">
+                        <div className="flex flex-row justify-start gap-8 md:gap-12 pt-10 border-t border-gold-200/50">
                             <div>
                                 <div className="flex items-baseline">
                                     <Counter value={37} duration={2} />
@@ -148,7 +148,7 @@ export function FirmSection() {
 
                 </div>
 
-                {/* Values Section (Renamed from Team) */}
+                {/* The Team - Glassmorphism Card (Restored) */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -191,22 +191,17 @@ export function FirmSection() {
                             <ShieldCheck className="w-8 h-8 text-gold-600" />
                         </div>
 
-                        <h3 className="text-2xl font-serif text-slate-800 mb-6">Compromiso de Calidad</h3>
+                        <h3 className="text-2xl font-serif text-slate-800 mb-6">Equipo de Oficiales Habilitados</h3>
                         <p className="text-slate-600 max-w-2xl mx-auto mb-10 text-lg">
-                            Más allá de la gestión procesal, ofrecemos tranquilidad.
-                            Nuestra metodología se basa en tres pilares fundamentales:
+                            La excelencia en la gestión diaria recae en nuestro equipo de oficiales altamente cualificadas,
+                            que aseguran que cada trámite se realice con precisión y celeridad.
                         </p>
 
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16">
-                            {[
-                                { title: 'Celeridad', desc: 'Tramitación inmediata' },
-                                { title: 'Transparencia', desc: 'Información en tiempo real' },
-                                { title: 'Eficacia', desc: 'Resolución proactiva' }
-                            ].map((item) => (
-                                <div key={item.title} className="flex flex-col items-center space-y-3">
+                        <div className="flex flex-wrap justify-center gap-8 md:gap-16">
+                            {['Carolina Castaño', 'María Pilar Pérez', 'Yolanda Nieto'].map((name) => (
+                                <div key={name} className="flex flex-col items-center space-y-2">
                                     <div className="w-2 h-2 bg-gold-400 rounded-full" />
-                                    <span className="text-xl text-slate-900 font-serif font-medium">{item.title}</span>
-                                    <span className="text-xs uppercase tracking-widest text-slate-500">{item.desc}</span>
+                                    <span className="text-xl text-slate-900 font-serif font-medium">{name}</span>
                                 </div>
                             ))}
                         </div>
