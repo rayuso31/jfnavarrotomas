@@ -216,7 +216,8 @@ export function FirmSection() {
 function Counter({ value, duration }: { value: number, duration: number }) {
     const [count, setCount] = React.useState(0);
     const nodeRef = React.useRef(null);
-    const isInView = useInView(nodeRef, { once: true, margin: "-100px" });
+    // Relaxed margin for mobile (triggers as soon as it enters viewport)
+    const isInView = useInView(nodeRef, { once: true, margin: "0px" });
 
     React.useEffect(() => {
         if (isInView) {
