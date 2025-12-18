@@ -138,7 +138,7 @@ export function FirmSection() {
                             {/* Image Container - Strictly on top */}
                             <div className="relative bg-slate-100 rounded-[6px] overflow-hidden aspect-[3/4] w-full z-10">
                                 <Image
-                                    src="/jfnt_refined_v2.png"
+                                    src="/jfnt.png"
                                     alt="Juan Francisco Navarro Tomás"
                                     fill
                                     className="object-cover"
