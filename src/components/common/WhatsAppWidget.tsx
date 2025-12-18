@@ -27,7 +27,17 @@ export function WhatsAppWidget() {
             aria-label="Contactar por WhatsApp"
         >
             {/* Ping effect */}
-            <span className="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-75 animate-ping group-hover:animate-none" />
+            {/* Ping effect - Limited to 3 pulses */}
+            <motion.span
+                className="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-75"
+                animate={{ scale: [1, 1.8], opacity: [0.8, 0] }}
+                transition={{
+                    duration: 1.5,
+                    repeat: 2, // Runs 3 times total (initial + 2 repeats)
+                    ease: "easeOut",
+                    delay: 2 // Wait a bit before starting
+                }}
+            />
 
             {/* Official WhatsApp SVG Icon */}
             <svg
