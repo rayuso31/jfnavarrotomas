@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Montserrat } from "next/font/google";
 import "./globals.css";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { WhatsAppWidget } from "@/components/common/WhatsAppWidget";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -32,6 +33,7 @@ export default function RootLayout({
       >
         <ScrollProgress />
         {children}
+        <WhatsAppWidget />
       </body>
     </html>
   );
