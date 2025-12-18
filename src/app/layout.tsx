@@ -4,6 +4,7 @@ import "./globals.css";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { WhatsAppWidget } from "@/components/common/WhatsAppWidget";
 import { ChatWidget } from "@/components/common/ChatWidget";
+import { CursorGlow } from "@/components/ui/CursorGlow";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -32,6 +33,7 @@ export default function RootLayout({
       <body
         className={`${playfair.variable} ${montserrat.variable} antialiased bg-cream-50 text-slate-800 font-sans`}
       >
+        <CursorGlow />
         <ScrollProgress />
         {children}
         <WhatsAppWidget />

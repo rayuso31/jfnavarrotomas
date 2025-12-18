@@ -18,6 +18,9 @@
 
   --color-slate-800: #1E293B;
   --color-slate-900: #0F172A;
+  /* Deeper, more luxurious black with subtle blue undertone */
+  --color-slate-950: #020617;
+  --color-luxury-black: #0A0E1A;
 
   --font-serif: var(--font-serif);
   --font-sans: var(--font-sans);
@@ -36,6 +39,9 @@
   --color-gold-600: var(--color-gold-600);
   --color-gold-700: var(--color-gold-700);
 
+  --color-slate-950: var(--color-slate-950);
+  --color-luxury-black: var(--color-luxury-black);
+
   --font-serif: var(--font-serif);
   --font-sans: var(--font-sans);
 }
@@ -43,6 +49,24 @@
 body {
   background-color: var(--bg-cream-50);
   color: var(--color-slate-900);
+}
+
+/* Custom Scrollbar - Luxury Gold */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-slate-900);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-gold-500) 0%, var(--color-gold-700) 100%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--color-gold-400) 0%, var(--color-gold-600) 100%);
 }
 
 /* Glassmorphism Utilities */
@@ -57,4 +81,9 @@ body {
   background: rgba(253, 250, 246, 0.8);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+/* Headline Display Typography */
+.headline-display {
+  letter-spacing: -0.02em;
 }

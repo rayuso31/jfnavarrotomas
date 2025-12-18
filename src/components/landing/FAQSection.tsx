@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 const faqs = [
     {
@@ -24,7 +24,7 @@ const faqs = [
 ];
 
 export function FAQSection() {
-    const [openIndex, setOpenIndex] = useState<number | null>(null);
+    const [openIndex, setOpenIndex] = useState<number | null>(0); // First open by default
 
     return (
         <section className="py-24 bg-cream-50 relative overflow-hidden">
@@ -44,7 +44,7 @@ export function FAQSection() {
                     <span className="text-gold-600 tracking-widest uppercase text-sm font-semibold mb-2 block">
                         Dudas Frecuentes
                     </span>
-                    <h2 className="font-serif text-4xl text-slate-900 mb-6">
+                    <h2 className="font-serif text-4xl text-slate-900 mb-6 headline-display">
                         Respuestas Claras.
                     </h2>
                     <div className="w-16 h-1 bg-gold-400 mx-auto" />
@@ -58,18 +58,33 @@ export function FAQSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className="border border-gold-200/50 rounded-sm bg-white shadow-sm hover:shadow-md transition-shadow"
+                            className={`border rounded-sm bg-white shadow-sm hover:shadow-md transition-all relative overflow-hidden ${openIndex === index
+                                    ? 'border-gold-400 shadow-gold-100/50'
+                                    : 'border-gold-200/50'
+                                }`}
                         >
+                            {/* Left border indicator */}
+                            <motion.div
+                                className="absolute left-0 top-0 w-1 bg-gold-500"
+                                initial={{ height: 0 }}
+                                animate={{ height: openIndex === index ? '100%' : 0 }}
+                                transition={{ duration: 0.3 }}
+                            />
+
                             <button
                                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                                className="w-full flex items-center justify-between p-6 text-left"
+                                className="w-full flex items-center justify-between p-6 text-left pl-8"
                             >
                                 <span className={`font-serif text-lg ${openIndex === index ? 'text-gold-600' : 'text-slate-800'} transition-colors`}>
                                     {faq.question}
                                 </span>
-                                <span className={`p-2 rounded-full ${openIndex === index ? 'bg-gold-100 text-gold-600' : 'bg-slate-100 text-slate-400'} transition-colors`}>
-                                    {openIndex === index ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
-                                </span>
+                                <motion.span
+                                    className={`p-2 rounded-full ${openIndex === index ? 'bg-gold-100 text-gold-600' : 'bg-slate-100 text-slate-400'} transition-colors`}
+                                    animate={{ rotate: openIndex === index ? 180 : 0 }}
+                                    transition={{ duration: 0.3 }}
+                                >
+                                    <ChevronDown className="w-4 h-4" />
+                                </motion.span>
                             </button>
                             <AnimatePresence>
                                 {openIndex === index && (
@@ -80,7 +95,7 @@ export function FAQSection() {
                                         transition={{ duration: 0.3 }}
                                         className="overflow-hidden"
                                     >
-                                        <div className="p-6 pt-0 text-slate-600 leading-relaxed font-light">
+                                        <div className="p-6 pt-0 pl-8 text-slate-600 leading-relaxed font-light">
                                             {faq.answer}
                                         </div>
                                     </motion.div>

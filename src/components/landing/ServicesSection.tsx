@@ -9,6 +9,7 @@ const services = [
         title: "Representación judicial",
         description: "Defensa profesional en todos los procedimientos judiciales con experiencia y dedicación completa.",
         icon: Scale,
+        featured: true, // Flagship service
     },
     {
         title: "Tramitación de escritos",
@@ -29,7 +30,7 @@ const services = [
 
 export function ServicesSection() {
     return (
-        <section id="services" className="relative py-32 bg-slate-900 text-cream-50 overflow-hidden">
+        <section id="services" className="relative py-32 bg-[#0A0E1A] text-cream-50 overflow-hidden">
 
             {/* Golden Particles Effect - Background */}
             <GoldenParticles />

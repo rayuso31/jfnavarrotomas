@@ -16,7 +16,7 @@ const locations = [
 
 export function ScopeSection() {
     return (
-        <section className="relative py-32 bg-slate-950 overflow-hidden">
+        <section className="relative py-32 bg-[#0A0E1A] overflow-hidden">
             {/* Background Tech Mesh */}
             <div className="absolute inset-0 opacity-20 pointer-events-none">
                 <div className="absolute w-full h-full bg-[linear-gradient(rgba(212,175,55,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(212,175,55,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem]" />

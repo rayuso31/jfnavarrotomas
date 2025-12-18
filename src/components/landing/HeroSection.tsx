@@ -1,14 +1,23 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 import Image from "next/image";
 
 export function HeroSection() {
+    const { scrollY } = useScroll();
+    // Create parallax effect - background moves slower than scroll
+    const backgroundY = useTransform(scrollY, [0, 500], [0, 150]);
+    const contentY = useTransform(scrollY, [0, 500], [0, 50]);
+    const opacity = useTransform(scrollY, [0, 300], [1, 0.3]);
+
     return (
         <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-cream-50">
-            {/* Background Sketch */}
-            <div className="absolute inset-0 opacity-15 pointer-events-none mix-blend-multiply z-0">
+            {/* Background Sketch - with Parallax */}
+            <motion.div
+                className="absolute inset-0 opacity-15 pointer-events-none mix-blend-multiply z-0"
+                style={{ y: backgroundY }}
+            >
                 <Image
                     src="/header-sketch.png"
                     alt="Valencia Background"
@@ -16,7 +25,7 @@ export function HeroSection() {
                     className="object-cover object-center"
                     priority
                 />
-            </div>
+            </motion.div>
             <div className="absolute inset-0 z-0 bg-gradient-to-tr from-cream-100 via-cream-50 to-gold-50 opacity-40" />
 
             {/* Floating Elements (Abstract 3D-like shapes) */}
@@ -60,8 +69,11 @@ export function HeroSection() {
                 </div>
             </motion.nav>
 
-            {/* Content Container */}
-            <div className="relative z-10 text-center max-w-5xl px-4 mt-16">
+            {/* Content Container - with parallax fade */}
+            <motion.div
+                className="relative z-10 text-center max-w-5xl px-4 mt-16"
+                style={{ y: contentY, opacity }}
+            >
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -71,7 +83,7 @@ export function HeroSection() {
                         Ejerciente desde el año 1988
                     </span>
 
-                    <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-slate-900 leading-tight mb-4">
+                    <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-slate-900 leading-tight mb-4 headline-display">
                         <span className="block text-slate-800">Soluciones jurídicas</span>
                         <span className="block bg-gradient-to-r from-gold-600 via-gold-500 to-gold-700 bg-clip-text text-transparent">
                             Ágiles y Eficientes
@@ -97,7 +109,7 @@ export function HeroSection() {
                         <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
                     </motion.a>
                 </motion.div>
-            </div>
+            </motion.div>
 
             {/* Scroll indicator */}
             <motion.div
