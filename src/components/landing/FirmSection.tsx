@@ -235,3 +235,42 @@ export function FirmSection() {
         </section>
     );
 }
+
+function Counter({ value, duration }: { value: number, duration: number }) {
+    const [count, setCount] = React.useState(0);
+    const nodeRef = React.useRef(null);
+    const isInView = useInView(nodeRef, { once: true, margin: "-100px" });
+
+    React.useEffect(() => {
+        if (isInView) {
+            const end = value;
+            // 60fps frame duration
+            const frameDuration = 1000 / 60;
+            // Total frames
+            const totalFrames = Math.round(duration * 60);
+
+            let frame = 0;
+            const timer = setInterval(() => {
+                frame++;
+                const progress = frame / totalFrames;
+                // easeOutExpo
+                const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+
+                if (frame === totalFrames) {
+                    setCount(end);
+                    clearInterval(timer);
+                } else {
+                    setCount(Math.floor(end * ease));
+                }
+            }, frameDuration);
+
+            return () => clearInterval(timer);
+        }
+    }, [isInView, value, duration]);
+
+    return (
+        <span ref={nodeRef} className="block text-4xl font-serif text-slate-900 font-bold mb-1">
+            {count.toLocaleString('de-DE')}
+        </span>
+    );
+}
