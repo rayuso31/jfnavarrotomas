@@ -126,17 +126,10 @@ export function FirmSection() {
                     {/* Background Gradient for depth */}
                     <div className="absolute inset-0 bg-gradient-to-b from-cream-50/80 via-transparent to-cream-50/80 pointer-events-none -z-10" />
 
-                    {/* Right Column: Image with "Golden Light" Frame */}
-                    <div className="relative w-full max-w-md mx-auto order-1 lg:order-2 flex justify-center items-center">
-                        <div className="relative p-[3px] rounded-lg overflow-hidden shadow-2xl bg-gradient-to-br from-slate-800 to-slate-900">
-
-                            {/* Animated Golden Light Border - Simplified & Robust */}
-                            <div className="absolute inset-0">
-                                <div className="absolute inset-[-200%] bg-[conic-gradient(from_0deg,transparent_0_340deg,#d4af37_360deg)] animate-[spin_4s_linear_infinite] opacity-100" />
-                            </div>
-
-                            {/* Image Container - Strictly on top */}
-                            <div className="relative bg-slate-100 rounded-[6px] overflow-hidden aspect-[3/4] w-full z-10">
+                    {/* Right Column: Image - Simplified & Robust Premium Frame */}
+                    <div className="relative w-full max-w-md mx-auto order-1 lg:order-2">
+                        <div className="relative rounded-xl border-[3px] border-gold-400 p-2 shadow-2xl shadow-gold-500/20 bg-white">
+                            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg">
                                 <Image
                                     src="/jfnt.png"
                                     alt="Juan Francisco Navarro Tomás"
@@ -146,7 +139,11 @@ export function FirmSection() {
                                     priority
                                 />
                             </div>
+                            {/* Subtle Gold Shine/Gloss Effect */}
+                            <div className="absolute inset-0 rounded-xl border border-white/50 pointer-events-none mix-blend-overlay" />
                         </div>
+                        {/* Background Decor */}
+                        <div className="absolute -bottom-6 -right-6 w-full h-full border-2 border-gold-200/50 rounded-xl -z-10" />
                     </div>
 
                 </div>
