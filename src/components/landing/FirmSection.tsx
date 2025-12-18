@@ -7,14 +7,14 @@ import { Users, Phone, ShieldCheck } from "lucide-react"; // Replaced Award with
 
 export function FirmSection() {
     return (
-        <section id="team" className="relative py-24 md:py-32 bg-cream-100 overflow-hidden">
+        <section id="team" className="relative py-24 md:py-32 bg-slate-50 overflow-hidden">
             {/* Decorative background element */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold-100/30 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2 pointer-events-none" />
             <div className="absolute inset-x-0 top-0 h-[600px] opacity-20 pointer-events-none mix-blend-multiply">
                 <Image src="/banner-luxury.png" alt="Luxury Background" fill className="object-cover object-top" />
             </div>
 
-            {/* Global Lady Justice Background - Optimized visibility */}
+            {/* Global Lady Justice Background */}
             <div className="absolute inset-0 w-full h-full pointer-events-none -z-5 opacity-10">
                 <Image
                     src="/lady_justice_bg.png"
@@ -24,6 +24,9 @@ export function FirmSection() {
                     quality={90}
                 />
             </div>
+
+            {/* Extended Global Background - Subtle Marble Texture */}
+            <div className="absolute inset-0 bg-[url('/luxury_marble_bg.png')] bg-repeat opacity-30 mix-blend-multiply pointer-events-none -z-10" />
 
             <div className="container mx-auto px-6 relative z-10">
 
@@ -120,52 +123,35 @@ export function FirmSection() {
                         </div>
                     </motion.div>
 
-                    {/* Refined Global Background - Subtle Marble & Gold Veins */}
-                    <div className="absolute inset-0 bg-[url('/luxury_marble_bg.png')] bg-repeat opacity-40 mix-blend-multiply pointer-events-none -z-20" />
-
                     {/* Background Gradient for depth */}
                     <div className="absolute inset-0 bg-gradient-to-b from-cream-50/80 via-transparent to-cream-50/80 pointer-events-none -z-10" />
 
-                    {/* Right Column: Image - Clean & High Quality with Greek Columns */}
+                    {/* Right Column: Image with "Golden Light" Frame */}
                     <div className="relative w-full max-w-md mx-auto order-1 lg:order-2 flex justify-center items-center">
-
-                        {/* Left Column Decoration */}
-                        <div className="hidden md:block absolute -left-12 h-[120%] w-24 top-[-10%] opacity-80 z-0">
-                            <Image
-                                src="/greek_column_gold.png"
-                                alt="Ionic Column"
-                                fill
-                                className="object-contain drop-shadow-xl"
-                            />
-                        </div>
-
-                        {/* Right Column Decoration */}
-                        <div className="hidden md:block absolute -right-12 h-[120%] w-24 top-[-10%] opacity-80 z-0 scale-x-[-1]">
-                            <Image
-                                src="/greek_column_gold.png"
-                                alt="Ionic Column"
-                                fill
-                                className="object-contain drop-shadow-xl"
-                            />
-                        </div>
-
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
-                            className="relative aspect-[3/4] w-full overflow-hidden rounded-t-full rounded-b-lg shadow-2xl bg-slate-100 z-10 border-[6px] border-white shadow-gold-900/20"
+                            className="relative p-[4px] rounded-lg overflow-hidden shadow-2xl"
                         >
-                            <Image
-                                src="/jfnt_refined_v2.png" // Using the new refined image
-                                alt="Juan Francisco Navarro Tomás"
-                                fill
-                                className="object-cover"
-                                sizes="(max-width: 768px) 100vw, 500px"
-                                priority
-                            />
-                            {/* Inner subtle border */}
-                            <div className="absolute inset-0 border border-gold-500/20 rounded-t-full rounded-b-lg m-2 pointer-events-none" />
+                            {/* Animated Golden Light Border */}
+                            <div className="absolute inset-0 bg-slate-900">
+                                <div className="absolute inset-[-150%] bg-[conic-gradient(from_0deg,transparent_0_340deg,white_360deg)] animate-[spin_4s_linear_infinite] opacity-40 mix-blend-overlay" />
+                                <div className="absolute inset-[-150%] bg-[conic-gradient(from_0deg,transparent_0_340deg,#d4af37_360deg)] animate-[spin_4s_linear_infinite]" />
+                            </div>
+
+                            {/* Image Container - sits on top of the border */}
+                            <div className="relative bg-slate-100 rounded-[calc(0.5rem-2px)] overflow-hidden aspect-[3/4] w-full h-full z-10">
+                                <Image
+                                    src="/jfnt_refined_v2.png"
+                                    alt="Juan Francisco Navarro Tomás"
+                                    fill
+                                    className="object-cover"
+                                    sizes="(max-width: 768px) 100vw, 500px"
+                                    priority
+                                />
+                            </div>
                         </motion.div>
                     </div>
 
