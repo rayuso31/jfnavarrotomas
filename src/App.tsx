@@ -13,7 +13,7 @@ import {
   Smartphone,
   Calendar
 } from 'lucide-react';
-import { useState } from 'react';
+import { useState, FormEvent } from 'react';
 
 const team = [
   {
@@ -56,6 +56,29 @@ const team = [
 
 export default function App() {
   const [activeCard, setActiveCard] = useState<number | null>(null);
+  const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormStatus('sending');
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/jfnavarrotomas@jfnavarrotomas.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(formData)),
+      });
+      if (res.ok) {
+        setFormStatus('sent');
+        form.reset();
+      } else {
+        setFormStatus('error');
+      }
+    } catch {
+      setFormStatus('error');
+    }
+  };
 
   return (
     <div className="bg-light-bg text-dark-text font-display antialiased selection:bg-primary selection:text-white overflow-x-hidden">
@@ -113,9 +136,9 @@ export default function App() {
             </div>
             <div className="aspect-[4/5] rounded-3xl overflow-hidden relative group card-hover md:mt-12">
               <img
-                alt="Profesional revisando documentos"
+                alt="Abogado dando la mano a cliente"
                 className="w-full h-full object-cover grayscale-img"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpHFr3AW9t5Da5FxI9n9sONef0LkG33oRmUHw130C2r3An7rFoL96JZ6Rnh9tOK4KvrAC_iy_FM1KuwSTgnVEK2cLlVAjLZPlfYibZlh9hd3YgRlPn_iX_flA-M3lf7y7HXc7bPLoWPDh99I0f3rrr7XYAxEdhJVq4-G1BHQUdvnaWmP1mW22ThPTepvzU8jPygMuvtX7geE7hyBKFQh2XKUYre3tXSrDkYrYoUVqRPRYRsf-bBQDHn8gKtN2W3EAxerNBWWz8g_GT"
+                src="/images/enfoque_gestion.png"
                 referrerPolicy="no-referrer"
               />
               <div className="absolute bottom-6 left-6 bg-white px-5 py-3 rounded-xl shadow-lg">
@@ -254,82 +277,104 @@ export default function App() {
           </div>
 
           <div className="bg-white p-8 md:p-10 rounded-3xl shadow-lg">
-            <form className="space-y-6">
-              <div>
-                <label htmlFor="name" className="sr-only">Nombre y apellidos*</label>
-                <input
-                  type="text"
-                  id="name"
-                  placeholder="Nombre y apellidos*"
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                  required
-                />
+            {formStatus === 'sent' ? (
+              <div className="text-center py-12">
+                <div className="text-5xl mb-4">✅</div>
+                <h3 className="text-2xl font-black mb-2">¡Mensaje enviado!</h3>
+                <p className="text-gray-500">Nos pondremos en contacto contigo lo antes posible.</p>
+                <button onClick={() => setFormStatus('idle')} className="mt-6 text-primary font-bold underline">Enviar otra consulta</button>
               </div>
+            ) : (
+              <form className="space-y-6" onSubmit={handleSubmit}>
+                <input type="hidden" name="_subject" value="Nueva consulta desde la web" />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_captcha" value="false" />
+                <div>
+                  <label htmlFor="name" className="sr-only">Nombre y apellidos*</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="Nombre"
+                    placeholder="Nombre y apellidos*"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                    required
+                  />
+                </div>
 
-              <div>
-                <label htmlFor="email" className="sr-only">Email*</label>
-                <input
-                  type="email"
-                  id="email"
-                  placeholder="Email*"
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                  required
-                />
-              </div>
+                <div>
+                  <label htmlFor="email" className="sr-only">Email*</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="Email"
+                    placeholder="Email*"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                    required
+                  />
+                </div>
 
-              <div>
-                <label htmlFor="cp" className="sr-only">C.P.*</label>
-                <input
-                  type="text"
-                  id="cp"
-                  placeholder="C.P.*"
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                  required
-                />
-              </div>
+                <div>
+                  <label htmlFor="cp" className="sr-only">C.P.*</label>
+                  <input
+                    type="text"
+                    id="cp"
+                    name="Codigo Postal"
+                    placeholder="C.P.*"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                    required
+                  />
+                </div>
 
-              <div>
-                <label htmlFor="phone" className="sr-only">Teléfono*</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  placeholder="Teléfono*"
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                  required
-                />
-              </div>
+                <div>
+                  <label htmlFor="phone" className="sr-only">Teléfono*</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="Telefono"
+                    placeholder="Teléfono*"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                    required
+                  />
+                </div>
 
-              <div>
-                <label htmlFor="message" className="sr-only">Consulta</label>
-                <textarea
-                  id="message"
-                  rows={4}
-                  placeholder="Consulta"
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none"
-                ></textarea>
-              </div>
+                <div>
+                  <label htmlFor="message" className="sr-only">Consulta</label>
+                  <textarea
+                    id="message"
+                    name="Consulta"
+                    rows={4}
+                    placeholder="Consulta"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none"
+                  ></textarea>
+                </div>
 
-              <div className="flex items-start gap-3">
-                <input
-                  type="checkbox"
-                  id="privacy"
-                  className="mt-1 w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary"
-                  required
-                />
-                <label htmlFor="privacy" className="text-sm text-gray-600">
-                  Conozco y acepto las condiciones de <a href="#" className="text-black font-bold underline">Política de Privacidad</a>
-                </label>
-              </div>
+                <div className="flex items-start gap-3">
+                  <input
+                    type="checkbox"
+                    id="privacy"
+                    className="mt-1 w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary"
+                    required
+                  />
+                  <label htmlFor="privacy" className="text-sm text-gray-600">
+                    Conozco y acepto las condiciones de <a href="#" className="text-black font-bold underline">Política de Privacidad</a>
+                  </label>
+                </div>
 
-              <div className="flex justify-center pt-4">
-                <button
-                  type="submit"
-                  className="bg-primary text-white px-12 py-4 rounded-xl font-bold text-lg hover:bg-sky-700 transition-colors shadow-lg hover:shadow-xl hover:-translate-y-1 transform duration-300 w-full md:w-auto"
-                >
-                  ENVIAR
-                </button>
-              </div>
-            </form>
+                {formStatus === 'error' && (
+                  <p className="text-red-500 text-sm text-center">Ha ocurrido un error. Inténtalo de nuevo.</p>
+                )}
+
+                <div className="flex justify-center pt-4">
+                  <button
+                    type="submit"
+                    disabled={formStatus === 'sending'}
+                    className="bg-primary text-white px-12 py-4 rounded-xl font-bold text-lg hover:bg-sky-700 transition-colors shadow-lg hover:shadow-xl hover:-translate-y-1 transform duration-300 w-full md:w-auto disabled:opacity-60 disabled:cursor-not-allowed"
+                  >
+                    {formStatus === 'sending' ? 'ENVIANDO...' : 'ENVIAR'}
+                  </button>
+                </div>
+              </form>
+            )}
           </div>
         </div>
       </section>
@@ -384,6 +429,22 @@ export default function App() {
           </div>
         </div>
       </footer>
+
+      {/* WhatsApp Floating Widget */}
+      <a
+        href="https://wa.me/34654535267?text=%C2%A1Hola!%20Quiero%20m%C3%A1s%20informaci%C3%B3n."
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 group"
+        aria-label="Contactar por WhatsApp"
+      >
+        <svg className="w-8 h-8 text-white fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+        <span className="absolute right-20 bg-white text-dark-text text-sm font-bold px-4 py-2 rounded-xl shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">
+          ¿Hablamos?
+        </span>
+      </a>
     </div>
   );
 }
