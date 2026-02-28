@@ -125,9 +125,9 @@ export default function App() {
             </div>
             <div className="aspect-[4/5] rounded-3xl overflow-hidden relative group card-hover">
               <img
-                alt="Libros de derecho antiguos"
+                alt="Palacio de Justicia Valencia"
                 className="w-full h-full object-cover grayscale-img"
-                src="https://images.unsplash.com/photo-1462206092226-f46025ffe607?auto=format&fit=crop&w=800&q=80"
+                src="/images/trayectoria.png"
                 referrerPolicy="no-referrer"
               />
               <div className="absolute bottom-6 left-6 bg-white px-5 py-3 rounded-xl shadow-lg">
@@ -226,7 +226,7 @@ export default function App() {
                   )}
                   <img
                     alt={member.name}
-                    className="w-full h-full object-cover grayscale-img"
+                    className="w-full h-full object-cover object-top grayscale-img"
                     src={member.img}
                     referrerPolicy="no-referrer"
                   />
